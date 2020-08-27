@@ -1,0 +1,567 @@
+package menu;
+import javax.swing.*; 
+ 
+
+	import java.awt.*;
+	import javax.swing.*;
+	import java.awt.event.*;
+	import java.awt.EventQueue;
+	import javax.swing.JFrame;
+	import javax.swing.JLabel;
+	import java.awt.Font;
+	import java.awt.Window;
+	import javax.swing.SwingConstants;
+	import javax.swing.JButton;
+	import javax.swing.JTextField;
+	import java.awt.event.ActionListener;
+	import java.sql.Connection;
+	import java.sql.DriverManager;
+	import java.sql.Statement;
+	import java.awt.event.ActionEvent;
+
+	public class SchoolRegistrationForm {
+	private JFrame frame;
+	private JTextField txtID;
+	private JTextField txtPW;
+	private JTextField txtPN;
+	private JTextField txtPS;
+	private JTextField txtIDS;
+	private JTextField txtST;
+	private JTextField txtCN;
+	private JTextField txtPW2;
+	private JTextField txtPW3;
+	private JTextField txtAdm;
+	private JTextField txtAds;
+	private JTextField txtJB;
+	private JTextField txtGR;
+	private JTextField txtP;
+	private JTextField txtC;
+	private JTextField txtPC;
+	private JTextField txtAddress;
+	private JTextField txtChildrens;
+
+		public static void main(String[] args) {
+			// TODO Auto-generated method stub
+			{ EventQueue.invokeLater(new Runnable() {
+	             public void run() {
+	                try {
+	                    SchoolRegistrationForm window = new SchoolRegistrationForm();
+	                     window.frame.setVisible(true);
+	                 } catch (Exception e) {
+	                     e.printStackTrace();
+	                 }
+	             }
+	      });
+	     }
+		}
+
+	public SchoolRegistrationForm() {
+	 initialize();
+	}
+	private void initialize() {
+		// TODO Auto-generated method stub
+		 frame = new JFrame("Mzamomtsha Parents Register");
+	     frame.setBounds(100, 100, 521, 508);
+	     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.getContentPane().setLayout(null);
+	     
+	     JLabel lblUserLogin = new JLabel("User Login");
+	     lblUserLogin.setHorizontalAlignment(SwingConstants.CENTER);
+	     lblUserLogin.setFont(new Font("Times New Roman", Font.BOLD, 25));
+	     lblUserLogin.setBounds(20, 25, 459, 34);
+	     frame.getContentPane().add(lblUserLogin);
+	     
+	      JRadioButton jRadioButton1=new JRadioButton();
+	      jRadioButton1.setText("ID Number");
+	      jRadioButton1.setBounds(25,68,179,20);
+	      frame.getContentPane().add(jRadioButton1);
+	      
+	      JLabel lblParentName=new JLabel("Parents Name");
+	      lblParentName.setBounds(25,68,179,20);
+	      frame.getContentPane().add(lblParentName);
+	      lblParentName.setVisible(false);
+	      
+	      JLabel lblAdminName=new JLabel("Learners Name");
+	      lblAdminName.setBounds(25,68,179,20);
+	      frame.getContentPane().add(lblAdminName);
+	      lblAdminName.setVisible(false);
+	      
+	      JLabel lblSurname=new JLabel("Parents SurName");
+	      lblSurname.setBounds(25,108,179,20);
+	      frame.getContentPane().add(lblSurname);
+	      lblSurname.setVisible(false);
+	      
+	      JLabel lblAdminSurname=new JLabel("Learners  Surname");
+	      lblAdminSurname.setBounds(25,108,179,20);
+	      frame.getContentPane().add(lblAdminSurname);
+	      lblAdminSurname.setVisible(false);
+	      
+	      JLabel lblID=new JLabel("Parents ID/Passport Number");
+	      lblID.setBounds(25,148,179,20);
+	      frame.getContentPane().add(lblID);
+	      lblID.setVisible(false);
+	      
+	      JLabel lblJobTittle=new JLabel("Date of birth");
+	      lblJobTittle.setBounds(25,148,179,20);
+	      frame.getContentPane().add(lblJobTittle);
+	      lblJobTittle.setVisible(false);
+	      
+	      JLabel lblStatus=new JLabel("Status");
+	      lblStatus.setBounds(25,188,179,20);
+	      frame.getContentPane().add(lblStatus);
+	      lblStatus.setVisible(false);
+	      
+	      JLabel lblGender2=new JLabel("Gender");
+	      lblGender2.setBounds(25,188,179,20);
+	      frame.getContentPane().add(lblGender2);
+	      lblGender2.setVisible(false);
+	       
+	      JLabel lblGender=new JLabel("Gender");
+	      lblGender.setBounds(25,228,179,20);
+	      frame.getContentPane().add(lblGender);
+	      lblGender.setVisible(false);
+	      
+	      JLabel lblGrade=new JLabel("Grade");
+	      lblGrade.setBounds(25,228,179,20);
+	      frame.getContentPane().add(lblGrade);
+	      lblGrade.setVisible(false);
+	      
+	      JLabel lblContactNumber=new JLabel("Contact Number");
+	      lblContactNumber.setBounds(25,278,179,20);
+	      frame.getContentPane().add(lblContactNumber);
+	      lblContactNumber.setVisible(false);
+	      
+	      JLabel lblParent=new JLabel("Parent Name");
+	      lblParent.setBounds(25,268,179,20);
+	      frame.getContentPane().add(lblParent);
+	      lblParent.setVisible(false);
+	      
+	      JLabel lblPassword2=new JLabel("Password");
+	      lblPassword2.setBounds(25,318,179,20);
+	      frame.getContentPane().add(lblPassword2);
+	      lblPassword2.setVisible(false);
+	      
+	      JLabel lblParentS=new JLabel("Parent Surname");
+	      lblParentS.setBounds(25,308,179,20);
+	      frame.getContentPane().add(lblParentS);
+	      lblParentS.setVisible(false);
+	      
+	      JLabel lblContacts=new JLabel("Parent Contact");
+	      lblContacts.setBounds(25,348,179,20);
+	      frame.getContentPane().add(lblContacts);
+	      lblContacts.setVisible(false);
+	        
+	      JLabel lblPassword3=new JLabel("Confirm Password");
+	      lblPassword3.setBounds(25,358,179,20);
+	      frame.getContentPane().add(lblPassword3);
+	      lblPassword3.setVisible(false);
+	      
+	      JLabel lblAddress=new JLabel("Parents Address");
+	      lblAddress.setBounds(25,388,179,20);
+	      frame.getContentPane().add(lblAddress);
+	      lblAddress.setVisible(false);
+	      
+	      JLabel lblChildrens=new JLabel("Number of Children");
+	      lblChildrens.setBounds(25,428,179,20);
+	      frame.getContentPane().add(lblChildrens);
+	      lblChildrens.setVisible(false);
+	      
+	      JRadioButton jRadioButton2=new JRadioButton();
+	      jRadioButton2.setHorizontalAlignment(SwingConstants.RIGHT);
+	      jRadioButton2.setText("Passport Number");
+	      jRadioButton2.setBounds(30, 68, 279, 30);
+	      frame.getContentPane().add(jRadioButton2);
+	      
+	      txtID = new JTextField();
+	      txtID.setBounds(25, 102, 179, 20);
+	      frame.getContentPane().add(txtID);
+	      
+	      txtAdm= new JTextField();
+	      txtAdm.setBounds(25,92,179,20);
+	      frame.getContentPane().add(txtAdm);
+	      txtAdm.setColumns(7);
+	      txtAdm.setVisible(false);
+	      
+	      txtPN =new JTextField();
+	      txtPN.setBounds(25,92,179,20);
+	      frame.getContentPane().add(txtPN);
+	      txtPN.setColumns(7);
+	      txtPN.setVisible(false);
+	      
+	      txtPS=new JTextField();
+	      txtPS.setBounds(25,128,179,20);
+	      frame.getContentPane().add(txtPS);
+	      txtPS.setColumns(7);
+	      txtPS.setVisible(false);
+	      
+	      txtJB=new JTextField();
+	      txtJB.setBounds(25,168,179,20);
+	      frame.getContentPane().add(txtJB);
+	      txtJB.setColumns(7);
+	      txtJB.setVisible(false);
+
+	      txtAds=new JTextField();
+	      txtAds.setBounds(25,128,179,20);
+	      frame.getContentPane().add(txtAds);
+	      txtAds.setColumns(7);
+	      txtAds.setVisible(false);
+	      
+	      txtIDS=new JTextField();
+	      txtIDS.setBounds(25,168,179,20);
+	      frame.getContentPane().add(txtIDS);
+	      txtIDS.setColumns(7);
+	      txtIDS.setVisible(false);
+	      
+	      JCheckBox jCheckBox3=new JCheckBox();
+	      jCheckBox3.setText("Female");
+	      jCheckBox3.setBounds(25,208,179,20);
+	      frame.getContentPane().add(jCheckBox3);
+	      jCheckBox3.setVisible(false);
+	      
+	      JCheckBox jCheckBox4=new JCheckBox();
+	      jCheckBox4.setText("Male");
+	      jCheckBox4.setHorizontalAlignment(SwingConstants.RIGHT);
+	      jCheckBox4.setBounds(25,208,229,20);
+	      frame.getContentPane().add(jCheckBox4);
+	      jCheckBox4.setVisible(false);
+	      
+	      txtST=new JTextField();
+	      txtST.setBounds(25,208,179,20);
+	      frame.getContentPane().add(txtST);
+	      txtST.setColumns(7);
+	      txtST.setVisible(false);
+	      
+	      txtGR=new JTextField();
+	      txtGR.setBounds(25,248,179,20);
+	      frame.getContentPane().add(txtGR);
+	      txtGR.setColumns(7);
+	      txtGR.setVisible(false);
+	      
+	      JCheckBox jCheckBox1=new JCheckBox();
+	      jCheckBox1.setText("Female");
+	      jCheckBox1.setBounds(25,248,179,20);
+	      frame.getContentPane().add(jCheckBox1);
+	      jCheckBox1.setVisible(false);
+	      
+	      JCheckBox jCheckBox2=new JCheckBox();
+	      jCheckBox2.setText("Male");
+	      jCheckBox2.setHorizontalAlignment(SwingConstants.RIGHT);
+	      jCheckBox2.setBounds(25,248,229,20);
+	      frame.getContentPane().add(jCheckBox2);
+	      jCheckBox2.setVisible(false);
+	      
+	      txtP=new JTextField();
+	      txtP.setBounds(25,288,179,20);
+	      frame.getContentPane().add(txtP);
+	      txtP.setColumns(7);
+	      txtP.setVisible(false);
+	      
+	      txtC=new JTextField();
+	      txtC.setBounds(25,328,179,20);
+	      frame.getContentPane().add(txtC);
+	      txtC.setColumns(7);
+	      txtC.setVisible(false);
+	      
+	      txtCN=new JTextField();
+	      txtCN.setBounds(25,298,179,20);
+	      frame.getContentPane().add(txtCN);
+	      txtCN.setColumns(7);
+	      txtCN.setVisible(false);
+	      
+	      txtPW2=new JTextField();
+	      txtPW2.setBounds(25, 338, 179,20);
+	      frame.getContentPane().add(txtPW2);
+	      txtPW2.setVisible(false);
+	      
+	      txtPC=new JTextField();
+	      txtPC.setBounds(25,368,179,20);
+	      frame.getContentPane().add(txtPC);
+	      txtPC.setColumns(7);
+	      txtPC.setVisible(false);
+	      
+	      txtPW3=new JTextField();
+	      txtPW3.setBounds(25,378,179,20);
+	      frame.getContentPane().add(txtPW3);
+	      txtPW3.setVisible(false);
+	      
+	      txtAddress=new JTextField();
+	      txtAddress.setBounds(25,408,179,20);
+	      frame.getContentPane().add(txtAddress);
+	      txtAddress.setVisible(false);
+	      
+	      txtChildrens=new JTextField();
+	      txtChildrens.setBounds(25,448,179,20);
+	      frame.getContentPane().add(txtChildrens);
+	      txtChildrens.setVisible(false);
+	      
+	      JLabel lblPassword = new JLabel("Password");
+	      lblPassword.setBounds(25, 122, 179, 20);
+	      frame.getContentPane().add(lblPassword);
+	      
+	      txtPW = new JTextField();
+	      txtPW.setBounds(25, 142, 179, 20);
+	      frame.getContentPane().add(txtPW);
+	      
+	      JButton btnAdm = new JButton("Parent Login");
+	      btnAdm.setFont(new Font("Sitka Display", Font.BOLD, 16));
+	      btnAdm.setBounds(54, 184, 179, 30);
+	      frame.getContentPane().add(btnAdm);
+	      
+	      JLabel lblRegister=new JLabel("Registered yet?");
+	      lblRegister.setBounds(25,224,179,20);
+	      frame.getContentPane().add(lblRegister);
+	      
+	      JButton btnRegister=new JButton("Parent Register");
+	      btnRegister.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnRegister.setBounds(25,264,179, 30);
+	      frame.getContentPane().add(btnRegister);
+	      
+	      JButton btnAdmin=new JButton("Admin Section");
+	      btnAdmin.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnAdmin.setBounds(25,304,179, 30);
+	      frame.getContentPane().add(btnAdmin);
+	      
+	      JButton btnSubmit=new JButton("Submit");
+	      btnSubmit.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnSubmit.setBounds(25,404,279,50);
+	      frame.getContentPane().add(btnSubmit);
+	      btnSubmit.setVisible(false);
+	      
+	      JButton btnDelete=new JButton("Delete");
+	      btnDelete.setHorizontalAlignment(SwingConstants.RIGHT);
+	      btnDelete.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnDelete.setBounds(250,288,179,50);
+	      frame.getContentPane().add(btnDelete);
+	      btnDelete.setVisible(false);
+	      
+	      JButton btnUpdate=new JButton("Update");
+	      btnUpdate.setHorizontalAlignment(SwingConstants.RIGHT);
+	      btnUpdate.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnUpdate.setBounds(250,348,179,50);
+	      frame.getContentPane().add(btnUpdate);
+	      btnUpdate.setVisible(false);
+	      
+	      JButton btnDisplayDate=new JButton("Display Data");
+	      btnDisplayDate.setHorizontalAlignment(SwingConstants.RIGHT);
+	      btnDisplayDate.setFont(new Font("Sikta Display",Font.BOLD,16));
+	      btnDisplayDate.setBounds(250,408,179,50);
+	      frame.getContentPane().add(btnDisplayDate);
+	      btnDisplayDate.setVisible(false);
+	      
+	      btnAdm.addActionListener(new ActionListener() {
+	    	  public void actionPerformed(ActionEvent e) {
+	    		  btnAdm.setVisible(false);
+	              txtID.setVisible(false);
+	              txtPW.setVisible(false);
+	              jRadioButton1.setVisible(false);
+	              jRadioButton2.setVisible(false);
+	              lblPassword.setVisible(false);
+	              lblRegister.setVisible(false);
+	              btnAdmin.setVisible(false);
+	              btnRegister.setVisible(false);
+	              
+	              lblUserLogin.setText("Parent Form");
+	              
+	              
+	              txtPN.setVisible(false);
+	              lblParentName.setVisible(false);
+	              lblSurname.setVisible(false);
+	              txtPS.setVisible(false);
+	              lblID.setVisible(false);
+	              txtIDS.setVisible(false);
+	              lblStatus.setVisible(false);
+	              txtST.setVisible(false);
+	              jCheckBox1.setVisible(false);
+	              jCheckBox2.setVisible(false);
+	              lblGender.setVisible(false);
+	              txtCN.setVisible(false);
+	              lblContactNumber.setVisible(false);
+	              lblPassword2.setVisible(false);
+	              txtPW2.setVisible(false);
+	              lblPassword3.setVisible(false);
+	              txtPW3.setVisible(false);
+	              btnSubmit.setVisible(false);
+
+	    	  }
+	      });
+	      
+	      btnRegister.addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	              
+	              txtPN.setVisible(true);
+	              lblParentName.setVisible(true);
+	              lblSurname.setVisible(true);
+	              txtPS.setVisible(true);
+	              lblID.setVisible(true);
+	              txtIDS.setVisible(true);
+	              lblStatus.setVisible(true);
+	              txtST.setVisible(true);
+	              jCheckBox1.setVisible(true);
+	              jCheckBox2.setVisible(true);
+	              lblGender.setVisible(true);
+	              txtCN.setVisible(true);
+	              lblContactNumber.setVisible(true);
+	              lblPassword2.setVisible(true);
+	              txtPW2.setVisible(true);
+	              lblPassword3.setVisible(true);
+	              txtPW3.setVisible(true);
+	              btnSubmit.setVisible(true);
+	              
+	              lblUserLogin.setText("Parent Form");
+	              
+	              btnAdm.setVisible(false);
+	              txtID.setVisible(false);
+	              txtPW.setVisible(false);
+	              jRadioButton1.setVisible(false);
+	              jRadioButton2.setVisible(false);
+	              lblPassword.setVisible(false);
+	              lblRegister.setVisible(false);
+	              btnAdmin.setVisible(false);
+	              btnRegister.setVisible(false);
+	              
+	              
+	          }
+	      });
+	      
+	      btnAdmin.addActionListener(new ActionListener() {
+	    	  public void actionPerformed(ActionEvent e) {
+	    		  
+	    		  lblAdminName.setVisible(true);
+	    		  txtAdm.setVisible(true);
+	    		  lblAdminSurname.setVisible(true);
+	    		  txtAds.setVisible(true);
+	    		  lblJobTittle.setVisible(true);
+	    		  txtJB.setVisible(true);
+	    		  lblGender2.setVisible(true);
+	    		  lblGrade.setVisible(true);
+	    		  lblParent.setVisible(true);
+	    		  lblParentS.setVisible(true);
+	    		  jCheckBox3.setVisible(true);
+	    		  jCheckBox4.setVisible(true);
+	    		  txtGR.setVisible(true);
+	    		  txtP.setVisible(true);
+	    		  txtC.setVisible(true);
+	    		  lblContacts.setVisible(true);
+	    		  txtPC.setVisible(true);
+	    		  lblAddress.setVisible(true);
+	    		  lblChildrens.setVisible(true);
+	    		  txtAddress.setVisible(true);
+	    		  txtChildrens.setVisible(true);
+	    		  btnDelete.setVisible(true);
+	    		  btnUpdate.setVisible(true);
+	    		  btnDisplayDate.setVisible(true);
+	    		  
+	    		  btnAdm.setVisible(false);
+	              txtID.setVisible(false);
+	              txtPW.setVisible(false);
+	              jRadioButton1.setVisible(false);
+	              jRadioButton2.setVisible(false);
+	              lblPassword.setVisible(false);
+	              lblRegister.setVisible(false);
+	              btnAdmin.setVisible(false);
+	              btnRegister.setVisible(false);
+	              
+	              lblUserLogin.setText("Admin Section");
+	              
+	              
+	              txtPN.setVisible(false);
+	              lblParentName.setVisible(false);
+	              lblSurname.setVisible(false);
+	              txtPS.setVisible(false);
+	              lblID.setVisible(false);
+	              txtIDS.setVisible(false);
+	              lblStatus.setVisible(false);
+	              txtST.setVisible(false);
+	              jCheckBox1.setVisible(false);
+	              jCheckBox2.setVisible(false);
+	              lblGender.setVisible(false);
+	              txtCN.setVisible(false);
+	              lblContactNumber.setVisible(false);
+	              lblPassword2.setVisible(false);
+	              txtPW2.setVisible(false);
+	              lblPassword3.setVisible(false);
+	              txtPW3.setVisible(false);
+	              btnSubmit.setVisible(false); 
+	    	  }
+	      });
+	      btnSubmit.addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	              
+	              // Create a variable for the connection string.
+	              String connectionUrl = "jdbc:sqlserver://localhost:1433;"
+	                      + "databaseName= Week6Sprint;integratedSecurity=true;";
+
+	              // Declare the JDBC Objects.
+	              Connection con = null;
+	              Statement stmt = null;
+
+	              try {
+	                  // Establish the connection.
+	                  Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	                  con = DriverManager.getConnection(connectionUrl);
+
+	                  String PN= txtPN.getText();
+	                  String PS = txtPS.getText();
+	                  String CN = txtCN.getText();
+	                  String ST = txtST.getText();
+	                  
+
+	                  // Create and execute an SQL statement that returns some data
+	                  String SQLstart = "INSERT INTO [dbo].[Parent Form] ([Parent Name],[Parent Surname],[Contact Number],[Status]) VALUES ('"
+	                          + PN + "','" + PS + "','" + CN+ "','" + ST + "')";
+
+	                  stmt = con.createStatement();
+	                  stmt.execute(SQLstart);
+
+	                  System.out.println("Your Info Has Successfully Been Added");
+
+	              }
+
+	              catch (Exception e1) {
+
+	                  e1.printStackTrace();
+	              }
+	              
+	          }
+	      });
+	      btnDelete.addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	        	// Create a variable for the connection string.
+	              String connectionUrl = "jdbc:sqlserver://localhost:1433;"
+	                      + "databaseName= Week6Sprint;integratedSecurity=true;";
+
+	              // Declare the JDBC Objects.
+	              Connection con = null;
+	              Statement stmt = null;
+
+	              try {
+	                  // Establish the connection.
+	                  Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	                  con = DriverManager.getConnection(connectionUrl);
+
+	                  String P= txtP.getText();
+	                  String PS = txtJB.getText();
+	                  String CN = txtAds.getText();
+	                  String AD = txtAddress.getText();
+	                  String C = txtChildrens.getText();
+	                  String GR = txtGR.getText();
+	                  
+
+	                  // Create and execute an SQL statement that returns some data
+	                  String SQLstart = "DELETE INTO [dbo].[Parent Form] ([Parent Name],[Parent Surname],[Contact Number],[Status]) VALUES ('"
+	                          + P + "','" + PS + "','" + CN+ "','" + AD + "','"+ C+ "','" + GR + "')";
+
+	                  stmt = con.createStatement();
+	                  stmt.execute(SQLstart);
+
+	                  System.out.println("Your Info Has Successfully Been Added");
+
+	              }
+
+	              catch (Exception e1) {
+
+	                  e1.printStackTrace();
+	              }              
+	}
+	      }
+
